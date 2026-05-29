@@ -3,7 +3,9 @@ from datetime import datetime
 from utils.tools import price_per_liter
 from id_fuel import get_product_id
 import pandas as pd
+import os
 import openpyxl
+filename='historia_cen_paliw.xlsx'
 DATE = datetime.today().strftime('%Y-%m-%d')
 fuel_history = []
 for product_id in get_product_id():
@@ -21,5 +23,7 @@ for product_id in get_product_id():
                     })
 
 fuel_history_df = pd.DataFrame(fuel_history)
-print(fuel_history_df)
-fuel_history_df.to_excel('historia_cen_paliw_{DATE}.xlsx'.format(DATE=DATE))
+
+if os.path.exists(filename):
+    os.remove(filename)
+fuel_history_df.to_excel(filename)
