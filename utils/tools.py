@@ -1,0 +1,1 @@
+price_per_liter=lambda x:round(x/1000,2)
