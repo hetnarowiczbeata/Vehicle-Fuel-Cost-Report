@@ -14,4 +14,3 @@ def get_product_id():
         except Exception as e:
             print(e)
     return products_id
-print(get_product_id())
